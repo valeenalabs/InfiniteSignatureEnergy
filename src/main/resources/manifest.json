@@ -1,0 +1,26 @@
+{
+    "Group": "dev.valeena.infinitesignature",
+    "Name": "InfiniteSignature",
+    "Version": "1.0.0",
+    "Description": "",
+    "Authors": [
+        {
+            "Name": "Valeena"
+        }
+    ],
+    "Website": "",
+    "ServerVersion": "2026.03.26-89796e57b",
+    "Dependencies": {
+        "Hytale:AssetModule": "*",
+        "Hytale:DamageModule": "*"
+    },
+    "OptionalDependencies": {
+        
+    },
+    "DisabledByDefault": false,
+    "Main": "dev.valeena.infinitesignature.InfiniteSignature",
+    "IncludesAssetPack": false,
+    "UpdateChecker": {
+        "CurseForge": ""
+    }
+}

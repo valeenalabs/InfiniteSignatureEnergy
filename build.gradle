@@ -1,0 +1,120 @@
+plugins {
+    id 'java'
+    id 'com.azuredoom.hytale-tools'
+    id 'com.azuredoom.hytalepublisher'
+}
+
+version = "1.0.0"
+group = "dev.valeena.infinitesignature"
+
+hytaleTools {
+    hytaleVersion = '2026.+'
+    manifestGroup = 'dev.valeena.infinitesignature'
+    manifestDependencies = "Hytale:AssetModule=*,Hytale:DamageModule=*"
+    modCredits = 'Valeena'
+    patchline = 'release'
+    modId = 'InfiniteSignature'
+    mainClass = 'dev.valeena.infinitesignature.InfiniteSignature'
+}
+
+hytalePublisher {
+    // Optional global release metadata
+    version       = project.version
+
+    releaseType   = "release"       // "release" | "beta" | "alpha"
+
+    // Defaults to project.hytale_version if present.
+    // Accepts dynamic selectors like "2026.+" — see Game Version below.
+    // gameVersion = project.hytale_version
+
+    changelogFile = "changelog.md"  // Relative to the root project directory
+
+    modtale {
+        enabled   = true
+        projectId = "1da07879-5464-4450-adf7-92065b157ba1"
+
+        // Hytale patchline used to resolve dynamic gameVersion selectors.
+        // Has no effect when gameVersion is set to a concrete version.
+        // patchline = "release"   // or "pre-release"
+
+        // Optional credential key overrides
+        // apiKeyProp = "modTaleKey"
+        // apiKeyEnv  = "MODTALE_KEY"
+
+        // Dependencies: required(modId, minVersion) / optional(modId, minVersion)
+    }
+
+    curseforge {
+        enabled   = true
+        projectId = "1456850" // Your CurseForge numeric project ID
+
+        // Optional game version ID override
+        // gameVersionIds = [14284]
+
+        // Dependencies: required(slug) / optional(slug)
+    }
+
+    modifold {
+        enabled   = false
+        projectId = "your-modifold-project-slug"
+
+        // Optional metadata overrides
+        // Must be lists — automatically converted to JSON arrays for the API
+        // loaders      = ["vanilla"]
+        // gameVersions = [project.hytale_version]
+
+        // Dependencies: required / optional / incompatible / embedded
+        // Second argument is an optional Modifold version_id; omit for "any version"
+        // required     "mermaids", "oCK3bg"
+        // optional     "prettier-than-before"
+        // incompatible "broken-mod"
+        // embedded     "bundled-helper", "abc123"
+    }
+
+    // thunderstore {
+    //     enabled    = false
+    //
+    //     // Required: the Thunderstore team (namespace) you upload under
+    //     namespace  = "YourTeam"
+    //
+    //     // Optional: defaults to project.name with spaces -> underscores
+    //     // packageName = "Your_Mod_Name"
+    //
+    //     // Optional
+    //     // websiteUrl = "link_to_your_sources"
+    //
+    //     // Optional: defaults to project.description, max 250 chars
+    //     // description = "A short description of the mod."
+    //
+    //     // Defaults to "hytale" — the Thunderstore community slug for Hytale
+    //     // community = "hytale"
+    //
+    //     // Tag the package per the Hytale community categories. Browse at
+    //     // https://thunderstore.io/api/experimental/community/hytale/category/
+    //     categories = ["plugins", "mods", "release"]
+    //
+    //     // Required by Thunderstore TOS if applicable
+    //     // hasNsfwContent = false
+    //
+    //     // Dependencies in Thunderstore "Namespace-PackageName-Version" format
+    //     // dependency "Hytale", "HytaleAPI", "8.8.1"
+    //     // dependency "Hytale-HytaleAPI-8.8.1"  // alternative single-string form
+    //
+    //     // --- Content bundling -------------------------------------------------
+    //     // Each helper places a file/folder into the Thunderstore-required folder
+    //     // structure inside the package zip:
+    //     //
+    //     //   plugin(path)      -> mods/<name>.jar
+    //     //   earlyPlugin(path) -> earlyplugins/<name>.jar
+    //     //   assetPack(path)   -> mods/<name>.zip
+    //     //   world(path)       -> worlds/<dir>
+    //     //   universe(path)    -> universes/<dir>
+    //     //   save(path)        -> saves/<dir>
+    //     //
+    //     // If you don't call any of these, the plugin's built jar is auto-placed
+    //     // into mods/ — matching the Hytale Modding Thunderstore plugin guide.
+    //     //
+    //     // plugin "build/libs/MyMod-${project.version}.jar"
+    //     // world  "src/main/resources/worlds/my-cool-world"
+    // }
+}
